@@ -443,15 +443,5 @@ umount -R /mnt
 unset LUKS_PASSPHRASE ROOT_PASSWORD USER_PASSWORD
 unset LUKS_PASSPHRASE_CONFIRM ROOT_PASSWORD_CONFIRM USER_PASSWORD_CONFIRM
 
-log_info "============================================"
-log_info "Installation complete!"
-log_info "============================================"
-echo ""
-log_info "Your Void Linux system is ready!"
-log_info ""
-log_info "Next steps after reboot:"
-log_info "  1. Enter LUKS passphrase at boot"
-log_info "  2. Login as: $USERNAME"
-log_info "  3. Run Ansible playbook to configure system"
-echo ""
+log_info "Installation complete! Rebooting..."
 reboot
