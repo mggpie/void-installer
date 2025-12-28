@@ -267,7 +267,7 @@ mkdir -p /mnt/var/db/xbps/keys
 cp -a /var/db/xbps/keys/* /mnt/var/db/xbps/keys/
 
 # Install base system (microcode will be installed later via Ansible)
-BASE_PACKAGES="base-system grub-x86_64-efi efibootmgr cryptsetup lvm2 linux linux-firmware curl git micro sudo binutils"
+BASE_PACKAGES="base-system grub-x86_64-efi efibootmgr cryptsetup lvm2 linux linux-firmware curl git sudo binutils"
 
 # Add VM-specific packages if running in a VM
 if [ "$TARGET_DISK" = "/dev/vda" ]; then
