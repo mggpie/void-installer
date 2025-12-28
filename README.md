@@ -15,7 +15,7 @@ Automated Void Linux installation script with **LUKS2 full disk encryption**, au
 
 ## Quick Start
 
-Boot from [Void Linux live ISO](https://voidlinux.org/download/), connect to the internet, and run:
+Boot from [Void Linux live ISO](https://voidlinux.org/download/), login as root, connect to the internet, and run:
 
 ```sh
 xbps-install -Syu xbps curl && curl -sL https://mggpie.github.io/void-installer/bootstrap.sh | sh
