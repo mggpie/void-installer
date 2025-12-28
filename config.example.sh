@@ -95,7 +95,6 @@ ENABLE_SSH="yes"
 # ============================================================================
 
 # Dotfiles repository
-DOTFILES_REPO="https://github.com/mggpie/dotfiles.git"
 
 # Run Ansible playbook after installation (manual step)
 # The script will create a helper script for post-install setup

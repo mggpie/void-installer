@@ -42,7 +42,6 @@ else
     BOOT_MODE="uefi"
     NETWORK_MANAGER="dhcpcd"
     ENABLE_SSH="yes"
-    DOTFILES_REPO="https://github.com/mggpie/dotfiles.git"
 fi
 
 # Colors for output
