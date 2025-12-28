@@ -1,9 +1,7 @@
 #!/bin/sh
-#
 # Void Linux Automated Installation Script
 # This script automates the Void Linux installation process
 # Compatible with POSIX sh (dash)
-#
 
 set -e  # Exit on error
 
