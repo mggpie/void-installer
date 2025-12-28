@@ -25,7 +25,7 @@ xbps-install -Syu xbps curl && curl -sL https://mggpie.github.io/void-installer/
 
 ## What Happens
 
-1. Downloads `install.sh` and `config.example.sh` to `/tmp`
+1. Downloads `install.sh` and `config.sh` to `/tmp`
 2. Prompts for LUKS passphrase, root password, and user password
 3. Partitions the disk (EFI + Boot + LUKS-encrypted root)
 4. Installs minimal Void Linux base system
@@ -34,7 +34,7 @@ xbps-install -Syu xbps curl && curl -sL https://mggpie.github.io/void-installer/
 
 ## Configuration
 
-Edit `config.example.sh` before installation to customize:
+Edit `config.sh` before installation to customize:
 
 | Variable | Default | Description |
 |----------|---------|-------------|

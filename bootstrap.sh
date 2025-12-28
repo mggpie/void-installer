@@ -17,7 +17,7 @@ echo ""
 # Download installer and config
 echo "[INFO] Downloading installer scripts..."
 curl -sSL "${BASE_URL}/install.sh" -o /tmp/install-void.sh
-curl -sSL "${BASE_URL}/config.example.sh" -o /tmp/config.sh
+curl -sSL "${BASE_URL}/config.sh" -o /tmp/config.sh
 chmod +x /tmp/install-void.sh
 
 echo "[INFO] Starting installation..."
