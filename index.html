@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void Linux Installation</title>
+    <style>
+        :root {
+            --bg: #1e1e2e;
+            --fg: #cdd6f4;
+            --surface: #313244;
+            --blue: #89b4fa;
+            --green: #a6e3a1;
+            --red: #f38ba8;
+            --yellow: #f9e2af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: var(--blue);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        h2 {
+            color: var(--green);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .description {
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .phase {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .phase-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .phase-number {
+            background: var(--blue);
+            color: var(--bg);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        code {
+            font-family: 'Intel One Mono', 'JetBrains Mono', monospace;
+            background: var(--bg);
+            padding: 1rem;
+            border-radius: 8px;
+            display: block;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            border: 1px solid rgba(137, 180, 250, 0.2);
+        }
+        
+        .copy-btn {
+            background: var(--blue);
+            color: var(--bg);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.75rem;
+            transition: opacity 0.2s;
+        }
+        
+        .copy-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .note {
+            background: rgba(249, 226, 175, 0.1);
+            border-left: 3px solid var(--yellow);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .note-title {
+            color: var(--yellow);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            opacity: 0.5;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Void Linux Installation</h1>
+        <p class="description">Automatyczna instalacja Void Linux z LUKS encryption i konfiguracją via Ansible</p>
+        
+        <div class="phase">
+            <div class="phase-title">
+                <span class="phase-number">1</span>
+                <h2 style="margin: 0;">Instalacja systemu (z Live ISO)</h2>
+            </div>
+            <p>Uruchom z Void Linux Live ISO, połącz z siecią i wykonaj:</p>
+            <code id="cmd1">curl -sL https://raw.githubusercontent.com/mggpie/dotfiles/main/docs/install | sh</code>
+            <button class="copy-btn" onclick="copyCmd('cmd1')">📋 Kopiuj</button>
+        </div>
+        
+        <div class="phase">
+            <div class="phase-title">
+                <span class="phase-number">2</span>
+                <h2 style="margin: 0;">Konfiguracja (po restarcie) - jednolinijkowiec!</h2>
+            </div>
+            <p>Po pierwszym uruchomieniu systemu, zaloguj się jako użytkownik i wykonaj:</p>
+            <code id="cmd3">curl -sL https://raw.githubusercontent.com/mggpie/dotfiles/main/docs/bootstrap | sh</code>
+            <button class="copy-btn" onclick="copyCmd('cmd3')">📋 Kopiuj</button>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">To zainstaluje git, ansible, sklonuje repo i uruchomi cały playbook automatycznie.</p>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">⚠️ Ważne informacje</div>
+            <ul>
+                <li>Skrypt instalacyjny formatuje dysk - <strong>backup danych!</strong></li>
+                <li>Domyślnie używa <code style="display: inline; padding: 0.2rem 0.4rem;">/dev/nvme0n1</code></li>
+                <li>System zostanie zaszyfrowany LUKS2 - zapamiętaj hasło!</li>
+                <li>Możesz edytować <code style="display: inline; padding: 0.2rem 0.4rem;">config.sh</code> przed instalacją</li>
+            </ul>
+        </div>
+        
+        <h2>📦 Co zostanie zainstalowane</h2>
+        <div class="phase">
+            <ul>
+                <li><strong>System:</strong> Void Linux (glibc) z runit</li>
+                <li><strong>Shell:</strong> Fish + Tide prompt</li>
+                <li><strong>WM:</strong> River (Wayland compositor)</li>
+                <li><strong>Audio:</strong> PipeWire + Bluetooth</li>
+                <li><strong>Terminal:</strong> Foot + Intel One Mono font</li>
+                <li><strong>Packages:</strong> Nix (stable) + Flatpak + xbps</li>
+                <li><strong>Dev:</strong> Python, Go, Lua, Docker, KVM/QEMU</li>
+                <li><strong>Apps:</strong> Firefox, mpv, zathura, newsboat, qbittorrent</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <a href="https://github.com/me/dotfiles">GitHub Repository</a> · 
+            Void Linux + Ansible = ❤️
+        </footer>
+    </div>
+    
+    <script>
+        function copyCmd(id) {
+            const code = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = event.target;
+                const original = btn.textContent;
+                btn.textContent = '✓ Skopiowano!';
+                setTimeout(() => btn.textContent = original, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
