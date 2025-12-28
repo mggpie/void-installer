@@ -18,14 +18,10 @@ Automated Void Linux installation script with **LUKS2 full disk encryption**, au
 Boot from [Void Linux live ISO](https://voidlinux.org/download/), connect to the internet, and run:
 
 ```sh
-curl -sL https://mggpie.github.io/void-installer/bootstrap.sh | sh
+xbps-install -Syu xbps curl && curl -sL https://mggpie.github.io/void-installer/bootstrap.sh | sh
 ```
 
-Or with wget:
-
-```sh
-wget -qO- https://mggpie.github.io/void-installer/bootstrap.sh | sh
-```
+> **Note:** The live ISO requires updating xbps and installing curl first.
 
 ## What Happens
 
@@ -63,7 +59,7 @@ Edit `config.example.sh` before installation to customize:
 - **Base:** Void Linux (glibc) with runit init
 - **Bootloader:** GRUB with LUKS support
 - **Networking:** dhcpcd
-- **Utilities:** curl, wget, git, vim, sudo
+- **Utilities:** curl, git, vim, sudo
 
 This is a minimal installation. Add your packages and [dotfiles](https://github.com/mggpie/dotfiles) after first boot.
 

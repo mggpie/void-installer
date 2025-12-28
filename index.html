@@ -79,7 +79,7 @@
         <div class="phase">
             <div class="phase-title"><span class="phase-number">2</span><h3 style="margin:0">Run the installer</h3></div>
             <p>Connect to the internet and run:</p>
-            <code id="cmd1">curl -sL https://mggpie.github.io/void-installer/bootstrap.sh | sh</code>
+            <code id="cmd1">xbps-install -Syu xbps curl && curl -sL https://mggpie.github.io/void-installer/bootstrap.sh | sh</code>
             <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('cmd1').textContent)">📋 Copy</button>
         </div>
         <div class="phase">
